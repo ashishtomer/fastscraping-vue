@@ -1,5 +1,17 @@
 # fastscraping-vue
 
+
+## HTTP Requests
+Using the vue-resource to make HTTP requests
+```
+npm install vue-resource
+```
+In main.js, I imported VueResource and used it in my project
+```
+import VueResource from 'vue-resource'
+```
+
+
 ## Project setup
 ```
 npm install
