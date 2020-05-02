@@ -5,7 +5,7 @@
 			<div class="field">
 				<label class="label">Email</label>
 				<div class="control">
-					<input class="input" type="email" placeholder="Email input" value="">
+					<input class="input" type="email" placeholder="Email input" v-model="email">
 				</div>
 				<p class="help is-danger" v-bind:class='{"is-invisible":isEmailWarningInvisible}'>This email is invalid</p>
 			</div>
@@ -13,7 +13,7 @@
 			<div class="field">
 				<label class="label">Password</label>
 				<div class="control">
-					<input class="input" type="password" placeholder="Text input">
+					<input class="input" type="password" placeholder="Password input" v-model="password">
 				</div>
 				<p class="help is-danger" v-bind:class='{"is-invisible":isPasswordWarningInvisible}'>This password is invalid</p>
 			</div>
@@ -21,7 +21,7 @@
 			<div class="field">
 				<div class="control">
 					<label class="checkbox">
-						<input type="checkbox">
+						<input type="checkbox" v-model="termsAgreed">
 						I agree to the <a href="#">terms and conditions</a>
 					</label>
 				</div>
@@ -40,17 +40,44 @@
 </template>
 
 <script type="text/javascript">
+	import axios from 'axios';
+
 	export default {
 		data() {
 			return {
+				email: "",
+				password: "",
+				termsAgreed: false,
 				isEmailWarningInvisible: true,
-				isPasswordWarningInvisible: true
+				isPasswordWarningInvisible: true,
+
+				httpOptions: {
+					
+				}
 			};
 		},
 
 		methods: {
 			register: function() {
-				this.$http.post('localhost')
+				let formData = {
+					"email": this.email,
+					"password": this.password,
+					"agreeToTerms": this.termsAgreed
+				};
+				
+				axios({
+					method: 'post',
+					url: 'http://localhost:9000/v1/api/signup',
+					data: formData,
+					headers: {
+						'Content-Type': 'application/json',
+						'X-Requested-With': 'XMLHttpRequest'
+					}
+				}).then(response => {
+					console.log(response)
+				}).catch(err => {
+					console.log(err)
+				})
 			}
 		}
 	}

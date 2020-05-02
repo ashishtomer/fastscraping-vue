@@ -14,7 +14,31 @@
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
+    <!-- render the app here -->
     <div id="app"></div>
-    <!-- built files will be auto injected -->
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+         https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.2/firebase-analytics.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyB_AnfEF0xTV0SfGm5e2qV3FjEiqkidIRw",
+        authDomain: "fastscraping.firebaseapp.com",
+        databaseURL: "https://fastscraping.firebaseio.com",
+        projectId: "fastscraping",
+        storageBucket: "fastscraping.appspot.com",
+        messagingSenderId: "344850575622",
+        appId: "1:344850575622:web:b08f900052012fc1116e87",
+        measurementId: "G-KMM7Y243ER"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
   </body>
 </html>
